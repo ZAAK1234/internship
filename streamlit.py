@@ -116,7 +116,8 @@ print(isinstance(SummarizationLLM, type))
 
 def get_conversation_chain(vectorstore):
     
-    summarizer = SummarizationLLM(model_dir=summarization_model_dir)  # Replace with your SummarizationLLM
+    summarizer = SummarizationLLM(model_dir=summarization_model_dir) 
+    summarizer.initialize_model()  # Replace with your SummarizationLLM
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=summarizer,  # Use your SummarizationLLM here
